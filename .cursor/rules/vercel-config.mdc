@@ -1,0 +1,37 @@
+---
+description: Vercel configuration standards for LeadPulse frontend
+globs:
+  - apps/frontend/vercel.json
+alwaysApply: false
+---
+
+When editing `vercel.json`:
+
+- Ensure the following settings:
+  ```json
+  {
+    "builds": [
+      {
+        "src": "next.config.js",
+        "use": "@vercel/next"
+      }
+    ],
+    "routes": [
+      { "src": "/api/(.*)", "dest": "https://leadpulse-backend.onrender.com/$1" },
+      { "src": "/(.*)", "dest": "/$1" }
+    ]
+  }
+  ```
+Proxy API requests to the Render backend (leadpulse-backend.onrender.com).
+Test configuration locally with vercel dev.
+Deploy a preview URL (vercel) to verify routing.
+Add environment variables via vercel env add (e.g., NEXT_PUBLIC_API_URL).
+Reference environment variables in next.config.js:
+```javascript
+module.exports = {
+  env: {
+    NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
+  },
+};
+```
+@reference: apps/frontend/next.config.js

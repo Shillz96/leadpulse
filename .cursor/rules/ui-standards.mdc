@@ -1,0 +1,23 @@
+---
+description: LeadPulse UI standards for consistent design
+alwaysApply: true
+---
+
+- Use the LeadPulse color palette for all UI elements:
+  - Marigold (#E89C31): Primary buttons (e.g., "Verify Lead"), CTAs.
+  - Muted Sky Blue (#A9C7D5): Data visualizations (charts, filters).
+  - Soft Fern (#92A680): Integration toggles, campaign triggers.
+  - Peony Pink (#F291A2): Notifications, A/B testing toggles.
+  - Warm Ivory (#F8EDE3): Dashboard backgrounds.
+  - Goldenrod (#F2C94C): Geolocation pins, mobile highlights.
+  - Bright White (#FEFEFE): Pricing cards, text on dark backgrounds.
+- Apply Magic UI components for dynamic effects:
+  - Glowing Button: For Marigold buttons (e.g., `<button className="magic-glow bg-marigold">Verify Lead</button>`).
+  - Animated Number: For lead scores in Muted Sky Blue (e.g., `<AnimatedNumber value={score} style={{ color: '#A9C7D5' }} />`).
+  - 3D Card Tilt: For dashboard widgets on Warm Ivory.
+  - Confetti Burst: For Peony Pink success alerts.
+- Use Tailwind CSS classes for styling (e.g., `bg-marigold text-bright-white`).
+- Ensure WCAG 2.1 contrast ratios (e.g., 4.5:1 for Marigold on Warm Ivory).
+- Test UI responsiveness on mobile (e.g., Goldenrod pins on maps).
+
+@reference: apps/frontend/tailwind.config.js

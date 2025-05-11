@@ -1,0 +1,35 @@
+---
+description: Standards for Next.js components in LeadPulse frontend
+globs:
+  - apps/frontend/**/*.{tsx,jsx}
+alwaysApply: false
+---
+
+When creating or editing Next.js components:
+
+- Use Tailwind CSS with LeadPulse colors (e.g., `bg-marigold`, `text-muted-sky-blue`).
+- Integrate Magic UI components for animations:
+  - Glowing Button for CTAs (e.g., `<button className="magic-glow bg-marigold">Verify Lead</button>`).
+  - 3D Card Tilt for dashboard widgets (e.g., `<div className="magic-3d-card bg-warm-ivory">{content}</div>`).
+- Follow component structure:
+  ```jsx
+  import { motion } from 'framer-motion';
+  import { MagicGlow } from 'magic-ui';
+
+  export default function ComponentName() {
+    return (
+      <div className="bg-warm-ivory">
+        <motion.button
+          className="magic-glow bg-marigold text-bright-white"
+          whileHover={{ scale: 1.05 }}
+        >
+          Action
+        </motion.button>
+      </div>
+    );
+  }
+  ```
+Test locally with vercel dev to ensure animations and responsiveness.
+Deploy to a preview URL (vercel) to verify in a browser.
+Use admin account (admin@leadpulse.com) to test component functionality (e.g., lead upload form).
+@reference: apps/frontend/components/GlowingButton.jsx

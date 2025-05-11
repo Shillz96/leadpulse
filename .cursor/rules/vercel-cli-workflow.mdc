@@ -1,0 +1,36 @@
+---
+description: Vercel CLI commands for LeadPulse frontend workflow
+alwaysApply: false
+---
+
+When performing frontend tasks, use the Vercel CLI as follows:
+
+1. **Local Development**:
+   - Run `vercel dev` in `apps/frontend` to start the Next.js server with production-like settings.
+   - Test UI components (e.g., Marigold #E89C31 buttons, Peony Pink #F291A2 notifications) and API calls.
+   - Example: `cd apps/frontend && vercel dev`
+
+2. **Preview Changes**:
+   - Push changes to a feature branch (e.g., `git push origin feature/lead-chart`).
+   - Run `vercel` to deploy a preview URL (e.g., `leadpulse-git-feature-xxx.vercel.app`).
+   - Test as admin (`admin@leadpulse.com`) to verify features (e.g., Muted Sky Blue #A9C7D5 charts).
+   - Example: `cd apps/frontend && vercel`
+
+3. **Production Deployment**:
+   - Merge to `main` and run `vercel --prod` to deploy to `leadpulse.com`.
+   - Perform smoke tests (e.g., lead verification, Soft Fern #92A680 toggles).
+   - Example: `cd apps/frontend && vercel --prod`
+
+4. **Environment Variables**:
+   - Add secrets with `vercel env add NEXT_PUBLIC_API_URL production`.
+   - Pull variables locally: `vercel env pull .env.local`.
+   - Example: `vercel env add NEXT_PUBLIC_API_URL production`
+
+5. **Debugging**:
+   - View logs with `vercel logs leadpulse.com --follow` to troubleshoot issues.
+   - Example: `vercel logs leadpulse.com`
+
+- Always test UI animations (e.g., Magic UI Glowing Button) in preview URLs.
+- Use admin account to access all features during testing.
+
+@reference: apps/frontend/vercel.json
