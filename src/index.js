@@ -15,6 +15,10 @@ mongoose.connect(MONGO_URI)
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.error('MongoDB connection error:', err));
 
+// Define Routes
+app.use('/api/auth', require('../routes/auth'));
+app.use('/api/leads', require('../routes/leads'));
+
 // Basic health check route
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: 'LeadPulse API is running' });

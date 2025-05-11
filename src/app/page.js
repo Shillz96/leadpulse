@@ -1,7 +1,14 @@
+'use client';
+
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import GlowingButton from "@/components/GlowingButton";
+import { useAuth } from "@/context/AuthContext";
 
 export default function Home() {
+  const router = useRouter();
+  const { isAuthenticated } = useAuth();
+  
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-10 bg-warm-ivory">
       <div className="z-10 max-w-5xl w-full items-center justify-between flex-col lg:flex-row gap-8 text-center">
@@ -15,8 +22,14 @@ export default function Home() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 mt-6">
-            <GlowingButton>Verify Lead</GlowingButton>
-            <GlowingButton color="muted-sky-blue">Start Campaign</GlowingButton>
+            <GlowingButton onClick={() => router.push('/leads/verify')}>
+              Verify Lead
+            </GlowingButton>
+            {!isAuthenticated && (
+              <GlowingButton color="muted-sky-blue" onClick={() => router.push('/auth')}>
+                Sign Up Free
+              </GlowingButton>
+            )}
           </div>
         </div>
       </div>
@@ -55,6 +68,17 @@ export default function Home() {
             Set up automated follow-ups to nurture leads and increase conversions.
           </p>
         </div>
+      </div>
+
+      {/* Call to Action */}
+      <div className="mt-20 w-full max-w-5xl bg-muted-sky-blue bg-opacity-10 p-10 rounded-xl text-center">
+        <h2 className="text-3xl font-bold mb-4 text-gray-800">Start Verifying Leads Today</h2>
+        <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+          Join thousands of real estate professionals who use LeadPulse to streamline their lead verification process.
+        </p>
+        <GlowingButton onClick={() => router.push('/leads/verify')} className="px-8 py-3 text-lg">
+          Try It Free
+        </GlowingButton>
       </div>
 
       {/* Footer */}
